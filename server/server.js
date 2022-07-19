@@ -21,4 +21,7 @@ io.on('connection', (socket) => {
     socket.on('sendToAll', (message) =>{
         io.emit("displayMessage", (message));
     });
+    socket.on('sendToSelf', (message) =>{
+        socket.emit("displayMessage", (message));
+    });
 });
