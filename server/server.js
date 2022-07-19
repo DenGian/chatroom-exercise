@@ -9,3 +9,16 @@ const server = http.createServer(app); //To use http to serve the app that expre
 server.listen(8080, () =>{
     console.log("server running on "+8080); // node server -> logs "server running on " in terminal
 });
+
+const io = require('socket.io')(server); //to require socket.io
+//The io variable is now the entry point of all the sockets connected to the server
+
+let counter = 0
+
+io.on('connection', (socket) => {
+    console.log(counter+' someone connected');
+    counter++;
+    socket.on('sendToAll', (message) =>{
+        io.emit("displayMessage", (message));
+    });
+});
