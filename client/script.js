@@ -1,23 +1,23 @@
 let socket = io.connect(); //to define your socket
-// let username;
-// do {
-//     username = window.prompt('Welcome to your MSN account, please log in')
+let username;
+do {
+    username = window.prompt('Welcome to your MSN account, please log in')
+}
+while (username === '');
+let message ='Welcome to the chatroom: ' + username;
+socket.emit('sendToAll', (message));
+
+// let username = document.getElementById('username');
+//
+// if (document.getElementById('loginButton') === ){
+//
 // }
-// while (username === '');
-// let message ='Welcome to the chatroom: ' + username;
-// socket.emit('sendToAll', (message));
-
-let username = document.getElementById('username');
-
-if (document.getElementById('loginButton') === ){
-
-}
-
-if (username !== ""){
-    let message ='Welcome to the chatroom: ' + username;
-} else {
-    alert('u mogdgiugi udhu isun')
-}
+//
+// if (username !== ""){
+//     let message ='Welcome to the chatroom: ' + username;
+// } else {
+//     alert('u')
+// }
 
 
 // class
