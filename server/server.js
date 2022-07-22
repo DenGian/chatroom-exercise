@@ -14,6 +14,7 @@ const io = require('socket.io')(server); //to require socket.io
 //The io variable is now the entry point of all the sockets connected to the server
 
 let counter = 0
+let usernames = []
 
 io.on('connection', (socket) => {
     console.log(counter+' someone connected');
@@ -24,4 +25,16 @@ io.on('connection', (socket) => {
     socket.on('sendToSelf', (message) =>{
         socket.emit("displayMessage", (message));
     });
+    socket.on('getUserName', (username)=>{
+        socket.name = username;
+        socket.emit('receiveUserName', (socket.name))
+    });
+    socket.on('sendToUserList', (username)=>{
+        // console.log(username);
+        // socket.name = username;
+        // console.log(socket.name);
+        usernames.push(username)
+        // console.log(usernames);
+        io.emit('displayUserList', (usernames));
+    })
 });
