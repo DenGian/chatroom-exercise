@@ -1,5 +1,5 @@
 // let message;
-let username ;
+// let username ;
 // username = document.querySelector('input').value;
 document.getElementById('loginButton').addEventListener('click',(e)=>{
     username = document.getElementById('username').value;
