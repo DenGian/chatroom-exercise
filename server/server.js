@@ -20,7 +20,7 @@ io.on('connection', (socket) => {
     console.log(counter+' someone connected');
     counter++;
     socket.on('sendToAll', (message) =>{
-        io.emit("displayMessage", (message));
+        io.emit("displayMessage", (message)); // obj username property+message property data.username and data.message
     });
     socket.on('sendToSelf', (message) =>{
         socket.emit("displayMessage", (message));
